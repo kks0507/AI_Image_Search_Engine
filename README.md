@@ -36,6 +36,8 @@ embedding = outputs.pooler_output.detach().cpu().numpy().squeeze()
 2. 변환된 이미지를 **ViTModel**에 전달하여 임베딩을 생성합니다.
 3. 최종적으로 모델의 출력에서 `pooler_output`을 추출하여, 텐서 데이터를 넘파이 배열로 변환한 후 1차원 벡터로 변환합니다.
 
+<br>
+
 #### 모든 이미지 벡터화: `ai_image_search_engine.py`
 ```python
 for i, img_path in enumerate(tqdm(img_list)):
@@ -52,6 +54,8 @@ for i, img_path in enumerate(tqdm(img_list)):
 2. 각 이미지 파일을 열고 `feature_extractor`를 통해 이미지를 벡터로 변환한 후, 모델을 사용해 임베딩을 추출합니다.
 3. 임베딩, 메타데이터(이미지 경로와 클래스), 그리고 고유 ID를 각각 리스트에 저장합니다.
 
+<br>
+
 #### 벡터 검색 수행 및 쿼리: `ai_image_search_engine.py`
 ```python
 query_result = collection.query(
@@ -62,6 +66,8 @@ query_result = collection.query(
 이 함수는 `Chroma DB`를 활용하여 검색 엔진을 구현하는 과정입니다. 쿼리 이미지를 임베딩한 후, 데이터베이스에 저장된 임베딩들과 비교하여 가장 유사한 이미지를 검색합니다.
 1. `query_embeddings`로 검색할 이미지의 임베딩을 입력합니다.
 2. `n_results`는 검색된 유사한 이미지의 결과 수를 지정합니다.
+
+<br>
 
 #### 검색 결과 시각화: `ai_image_search_engine.py`
 ```python
